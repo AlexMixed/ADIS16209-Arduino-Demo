@@ -160,7 +160,7 @@ float ADIS16209::accelScale(int16_t sensorData)
   sensorData = sensorData & 0x3FFF; // Discard upper two bits
   int isNeg = sensorData & 0x2000;
   if (isNeg == 0x2000) // If the number is negative, scale and sign the output
-    signedData = sensorData - 0x3FFF;
+    signedData = sensorData - 0x4000;
   else
     signedData = sensorData;
   float finalData = signedData * 0.24414; // Multiply by accel sensitivity (244.14 uG/LSB)
